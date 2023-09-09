@@ -1,0 +1,3 @@
+
+Contact: mailto:security@grethler.ch
+Encryption: https:\\www.grethler.ch\.well-known\openpgpkey\hu\publickey.txt
