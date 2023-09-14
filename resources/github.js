@@ -39,10 +39,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var headerElement = document.querySelector(".u-layout-row"); // Assuming there's only one element with this class
     fetchRepos()
         .then(repos => {
+            var number = 0;
+            const max = 5;
             var content = "";
             var sortedRepos = sort_object(repos);
             for (var reponame in sortedRepos) {
-                content += `<a href="https://github.com/${username}/${reponame}" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${reponame}&theme=dark" width="400" height="150" /></a>`;
+                if (number <= max){
+                    content += `<a href="https://github.com/${username}/${reponame}" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${reponame}&theme=dark" width="400" height="150" /></a>`;
+                    number++;
+                };
             }
             headerElement.innerHTML = content;
         })
