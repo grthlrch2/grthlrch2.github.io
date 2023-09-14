@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (number <= max){
                     content += `<a href="https://github.com/${username}/${reponame}" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${reponame}&theme=dark" width="400" height="150" /></a>`;
                     number++;
+                } else {
+                    break;
                 };
             }
             headerElement.innerHTML = content;
