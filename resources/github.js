@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var headerElement = document.querySelector(".u-layout-row"); // Assuming there's only one element with this class
     fetchRepos()
         .then(repos => {
+            var number = 0;
+            const max = 5;
             var content = "";
             var sortedRepos = sort_object(repos);
             for (var reponame in sortedRepos) {
