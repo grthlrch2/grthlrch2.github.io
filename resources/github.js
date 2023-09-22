@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var content = "";
             var sortedRepos = sort_object(repos);
             for (var reponame in sortedRepos) {
-                content += `<a href="https://github.com/${username}/${reponame}" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${reponame}&theme=dark" width="400" height="auto" /></a>`;
+                content += `<a style="margin:10px;" href="https://github.com/${username}/${reponame}" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${reponame}&theme=dark" width="400" height="auto" /></a>`;
             }
             headerElement.innerHTML = content;
         })
