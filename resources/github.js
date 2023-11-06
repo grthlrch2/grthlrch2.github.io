@@ -10,37 +10,41 @@ function fetchRepos() {
             data.forEach(repo => {
                 var reponame = repo.name;
                 var stars = repo.stargazers_count;
+                var date = repo.updated_at;
                 var fork = repo.fork;
                 if (reponame !== username && !ignoredRepos.includes(reponame) && fork != true) {
-                    repos[reponame] = stars;
+                    repos[reponame] = [stars, date];
                 }
             });
+            console.log(repos)
             return repos;
         });
 }
 
 function sort_object(obj) {
     var items = Object.keys(obj).map(function(key) {
-        return [key, obj[key]];
+      return [key, obj[key]];
     });
     items.sort(function(first, second) {
-        return second[1] - first[1];
+      if (first[1][0] === 0 && second[1][0] === 0) {
+        return second[1][1].localeCompare(first[1][1]);
+      } else {
+        return second[1][0] - first[1][0];
+      }
     });
     var sorted_obj = {};
     items.forEach(function(v) {
-        var use_key = v[0];
-        var use_value = v[1];
-        sorted_obj[use_key] = use_value;
+      var use_key = v[0];
+      var use_value = v[1][0];
+      sorted_obj[use_key] = use_value;
     });
     return sorted_obj;
-}
+  }
 
 document.addEventListener("DOMContentLoaded", function () {
     var headerElement = document.querySelector(".u-layout-row"); // Assuming there's only one element with this class
     fetchRepos()
         .then(repos => {
-            var number = 0;
-            const max = 5;
             var content = "";
             var sortedRepos = sort_object(repos);
             for (var reponame in sortedRepos) {
