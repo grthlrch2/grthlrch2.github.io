@@ -10,7 +10,7 @@ function fetchRepos() {
             data.forEach(repo => {
                 var reponame = repo.name;
                 var stars = repo.stargazers_count;
-                var date = repo.updated_at;
+                var date = repo.pushed_at;
                 var fork = repo.fork;
                 if (reponame !== username && !ignoredRepos.includes(reponame) && fork != true) {
                     repos[reponame] = [stars, date];
