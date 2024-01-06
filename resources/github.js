@@ -1,4 +1,4 @@
-var username = "delbra1n";
+var username = "grethler";
 var ignoredRepos = ["repo1", "repo2"]; 
 var url = `https://api.github.com/users/${username}/repos`;
 
